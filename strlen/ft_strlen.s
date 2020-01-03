@@ -2,19 +2,14 @@
 
 section .data
 
-msg:    db      "Hello, world!", 10
-.len:   equ     $ - msg
-
-
 section .text
 	global _fstrlen
 
 _fstrlen:
-	mov		rbx, rdi
-    mov     rax, 0x2000004 ; write
+	mov		rdx, rsi ; 1st argument
+	mov		rsi, rdi ; 2nd argument
     mov     rdi, 1 ; stdout
-    lea     rsi, [rel msg]
-    mov     rdx, rbx
+    mov     rax, 0x2000004 ; write
     syscall
 
     mov     rax, 0x2000001 ; exit
