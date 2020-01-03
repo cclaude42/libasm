@@ -10,10 +10,11 @@ section .text
 	global _fstrlen
 
 _fstrlen:
+	mov		rbx, rdi
     mov     rax, 0x2000004 ; write
     mov     rdi, 1 ; stdout
     lea     rsi, [rel msg]
-    mov     rdx, msg.len
+    mov     rdx, rbx
     syscall
 
     mov     rax, 0x2000001 ; exit
