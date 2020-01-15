@@ -1,17 +1,11 @@
-; nasm -f macho64 ft_strlen.s && gcc -o exec main.c ft_strlen.o && ./exec
+; nasm -f macho64 ft_write.s && gcc -o exec main.c ft_write.o && ./exec
 
 section .data
 
 section .text
-	global _fstrlen
+	global _ft_write
 
-_fstrlen:
-	mov		rdx, rsi ; 1st argument
-	mov		rsi, rdi ; 2nd argument
-    mov     rdi, 1 ; stdout
-    mov     rax, 0x2000004 ; write
+_ft_write:
+    mov     rax, 0x2000004	; write call
     syscall
-
-    mov     rax, 0x2000001 ; exit
-    mov     rdi, 0
-    syscall
+	ret

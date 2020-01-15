@@ -1,12 +1,18 @@
 #include <stdio.h>
+#include <string.h>
 
-extern int fstrlen(char *s);
+extern size_t ft_strlen(const char *s);
 
 int	main(void)
 {
-	int	ret;
+	char	*str;
+	int		ret;
 
-	ret = fstrlen("ijefowefowkemfowefnewofnwe");
+	str = NULL;
+
+	ret = ft_strlen(str);
+	printf("%d\n", ret);
+	ret = strlen(str);
 	printf("%d\n", ret);
 	return (0);
 }
