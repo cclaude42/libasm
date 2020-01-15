@@ -6,12 +6,9 @@ section .text
 	global _fstrlen
 
 _fstrlen:
-	mov		rdx, rsi ; 1st argument
-	mov		rsi, rdi ; 2nd argument
-    mov     rdi, 1 ; stdout
-    mov     rax, 0x2000004 ; write
-    syscall
-
-    mov     rax, 0x2000001 ; exit
-    mov     rdi, 0
-    syscall
+		mov		rax, -1				; i = -1
+loop:	inc		rax					; i++
+		mov		cl, byte [rdi+rax]	; cl = str[i]
+		cmp		cl, 0				; if cl == \0
+    	jne		loop				; then loop
+		ret

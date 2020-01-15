@@ -1,10 +1,12 @@
 #include <stdio.h>
 
-extern void fstrlen(char *s, int size);
+extern int fstrlen(char *s);
 
 int	main(void)
 {
-	printf("In C program\n");
-	fstrlen("Victory\n", 8);
+	int	ret;
+
+	ret = fstrlen("ijefowefowkemfowefnewofnwe");
+	printf("%d\n", ret);
 	return (0);
 }
