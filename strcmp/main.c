@@ -9,8 +9,8 @@ int	main(void)
 	char	*str2;
 	int		ret;
 
-	str1 = "Hella";
-	str2 = "Hello";
+	str1 = "hello";
+	str2 = NULL;
 	ret = ft_strcmp(str1, str2);
 	printf("%d\n", ret);
 	ret = strcmp(str1, str2);
