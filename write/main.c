@@ -10,9 +10,9 @@ int	main(void)
 	int		len;
 	int		ret;
 
-	fd = -1;
-	str = "hello";
-	len = 5;
+	fd = 1;
+	str = "helo";
+	len = 40976;
 
 	ret = ft_write(fd, str, len);
 	printf("\n%d\n", ret);
