@@ -10,7 +10,7 @@ int	main(void)
 	int		len;
 	int		ret;
 
-	fd = 1;
+	fd = -1;
 	str = "hello";
 	len = 5;
 
