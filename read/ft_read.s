@@ -1,4 +1,4 @@
-; nasm -f macho64 ft_read.s && gcc -o exec main.c ft_read.o && ./exec
+; nasm -f macho64 ft_read.s && gcc -o exec main.c ft_read.o && ./exec 1 && ./exec 0
 
 section .data
 
