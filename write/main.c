@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <unistd.h>
-
-extern ssize_t ft_write(int fildes, const void *buf, size_t nbyte);
+#include "../libasm.h"
 
 int	main(void)
 {
@@ -12,7 +9,7 @@ int	main(void)
 
 	fd = 1;
 	str = "helo";
-	len = 40976;
+	len = 4;
 
 	ret = ft_write(fd, str, len);
 	printf("\n%d\n", ret);

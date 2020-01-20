@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-
-extern int ft_strcmp(const char *s1, const char *s2);
+#include "../libasm.h"
 
 int	main(void)
 {

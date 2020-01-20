@@ -1,9 +1,4 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdlib.h>
-
-extern ssize_t ft_read(int fildes, void *buf, size_t nbyte);
+#include "../libasm.h"
 
 int	main(int ac, char **av)
 {
