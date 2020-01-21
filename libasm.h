@@ -1,8 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libasm.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/21 18:25:47 by cclaude           #+#    #+#             */
+/*   Updated: 2020/01/21 18:25:49 by cclaude          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <string.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <fcntl.h>
 #include <stdlib.h>
+
+# define RESET   "\033[0m"
+# define RED     "\033[31m"
+# define GREEN   "\033[32m"
+# define BUFFER_SIZE 512
 
 extern ssize_t	ft_read(int fildes, void *buf, size_t nbyte);
 extern int		ft_strcmp(const char *s1, const char *s2);

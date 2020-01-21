@@ -1,6 +1,16 @@
-; nasm -f macho64 ft_write.s && gcc -o exec main.c ft_write.o && ./exec
+; **************************************************************************** ;
+;                                                                              ;
+;                                                         :::      ::::::::    ;
+;    ft_write.s                                         :+:      :+:    :+:    ;
+;                                                     +:+ +:+         +:+      ;
+;    By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+         ;
+;                                                 +#+#+#+#+#+   +#+            ;
+;    Created: 2020/01/21 18:26:02 by cclaude           #+#    #+#              ;
+;    Updated: 2020/01/21 18:26:04 by cclaude          ###   ########.fr        ;
+;                                                                              ;
+; **************************************************************************** ;
 
-section .data
+; nasm -f macho64 ft_write.s && gcc -o exec main.c ft_write.o && ./exec
 
 section .text
 	global _ft_write

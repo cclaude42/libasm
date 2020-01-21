@@ -1,25 +1,35 @@
-; nasm -f macho64 ft_strcmp.s && gcc -o exec main.c ft_strcmp.o && ./exec
+; **************************************************************************** ;
+;                                                                              ;
+;                                                         :::      ::::::::    ;
+;    ft_strcmp.s                                        :+:      :+:    :+:    ;
+;                                                     +:+ +:+         +:+      ;
+;    By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+         ;
+;                                                 +#+#+#+#+#+   +#+            ;
+;    Created: 2020/01/21 18:26:35 by cclaude           #+#    #+#              ;
+;    Updated: 2020/01/21 19:04:41 by cclaude          ###   ########.fr        ;
+;                                                                              ;
+; **************************************************************************** ;
 
-section .data
+; nasm -f macho64 ft_strcmp.s && gcc -o exec main.c ft_strcmp.o && ./exec
 
 section .text
 	global _ft_strcmp
 
 _ft_strcmp:
-		mov		rax, -1				; i = -1
-loop:	inc		rax					; i++
-		mov		cl, byte [rdi+rax]	; cl = str1[i]
-		mov		dl, byte [rsi+rax]	; dl = str2[i]
-		cmp		cl, 0				; if cl == 0
+		push	r10
+		mov		r10, -1				; i = -1
+loop:	inc		r10					; i++
+		mov		al, byte [rdi+r10]	; al = str1[i]
+		mov		bl, byte [rsi+r10]	; bl = str2[i]
+		cmp		al, 0				; if al == 0
 		je		end				; then zero
-		cmp		dl, 0				; if dl == 0
+		cmp		bl, 0				; if bl == 0
 		je		end				; then zero
-		cmp		cl, dl				; if cl == dl
+		cmp		al, bl				; if al == bl
     	je		loop				; then loop
 		jmp		end
 
 end:
-	movsx	rax, cl			; return = str1[i] - str2[i]
-	movsx	rdx, dl
-	sub		rax, rdx
+	pop		r10
+	sub		rax, rbx
 	ret

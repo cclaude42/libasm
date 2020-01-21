@@ -1,6 +1,16 @@
-; nasm -f macho64 ft_read.s && gcc -o exec main.c ft_read.o && ./exec 1 && ./exec 0
+; **************************************************************************** ;
+;                                                                              ;
+;                                                         :::      ::::::::    ;
+;    ft_read.s                                          :+:      :+:    :+:    ;
+;                                                     +:+ +:+         +:+      ;
+;    By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+         ;
+;                                                 +#+#+#+#+#+   +#+            ;
+;    Created: 2020/01/21 18:26:40 by cclaude           #+#    #+#              ;
+;    Updated: 2020/01/21 18:26:41 by cclaude          ###   ########.fr        ;
+;                                                                              ;
+; **************************************************************************** ;
 
-section .data
+; nasm -f macho64 ft_read.s && gcc -o exec main.c ft_read.o && ./exec 1 && ./exec 0
 
 section .text
 	global _ft_read

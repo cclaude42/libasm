@@ -1,8 +1,8 @@
 NAME = libasm.a
 
-CC = nasm
+NA = nasm
 
-CFLAGS = -f macho64
+NFLAGS = -f macho64
 
 SRC = ft_read.s \
 	ft_write.s \
@@ -23,14 +23,13 @@ $(NAME): $(OBJ)
 
 %.o: %.s
 	@echo "\033[0;32mGenerating binary..."
-	$(CC) $(CFLAGS) $<
+	$(NA) $(NFLAGS) $<
 	@echo "\033[0m"
 
 clean:
 	@echo "\033[0;31mCleaning..."
 	rm -f $(OBJ)
-	rm -rf a.out
-	rm -rf */exec
+	rm -rf exec
 	@echo "\033[0m"
 
 fclean: clean
@@ -41,6 +40,12 @@ fclean: clean
 re: fclean all
 
 test: re
-	gcc -L. -lasm main.c && ./a.out
+	@echo "\033[0;31mCleaning..."
+	rm -rf $(OBJ)
+	@echo "\033[0m"
+	@echo "\033[0;36mTesting : "
+	gcc -L. -lasm -o exec main.c
+	@echo "\033[0m"
+	./exec
 
 .PHONY: all re clean fclean test

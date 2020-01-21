@@ -1,6 +1,16 @@
-; nasm -f macho64 ft_strcpy.s && gcc -o exec main.c ft_strcpy.o && ./exec
+; **************************************************************************** ;
+;                                                                              ;
+;                                                         :::      ::::::::    ;
+;    ft_strcpy.s                                        :+:      :+:    :+:    ;
+;                                                     +:+ +:+         +:+      ;
+;    By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+         ;
+;                                                 +#+#+#+#+#+   +#+            ;
+;    Created: 2020/01/21 18:26:30 by cclaude           #+#    #+#              ;
+;    Updated: 2020/01/21 18:26:30 by cclaude          ###   ########.fr        ;
+;                                                                              ;
+; **************************************************************************** ;
 
-section .data
+; nasm -f macho64 ft_strcpy.s && gcc -o exec main.c ft_strcpy.o && ./exec
 
 section .text
 	global _ft_strcpy
