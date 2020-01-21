@@ -4,10 +4,12 @@ CC = nasm
 
 CFLAGS = -f macho64
 
-SRC = read/ft_read.s \
-	write/ft_write.s \
-	strcmp/ft_strcmp.s \
-	strlen/ft_strlen.s \
+SRC = ft_read.s \
+	ft_write.s \
+	ft_strcmp.s \
+	ft_strlen.s \
+	ft_strcpy.s \
+	ft_strdup.s \
 
 OBJ = $(SRC:.s=.o)
 
@@ -38,4 +40,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all re clean fclean
+test: re
+	gcc -L. -lasm main.c && ./a.out
+
+.PHONY: all re clean fclean test

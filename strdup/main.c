@@ -4,12 +4,15 @@ int	main(void)
 {
 	char	*str;
 	char	*dst;
+	int		len;
+	void	*ptr;
 
-	str = "Hello";
-	dst = ft_strdup(str);
+	str = "Hellowdwdw";
+	len = ft_strdup(str);
+	// printf("%d\n", len);
 	// printf("%s\n", dst);
 	// dst = strdup(str);
 	// printf("%s\n", dst);
-	free(dst);
+	// free(dst);
 	return (0);
 }
