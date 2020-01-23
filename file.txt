@@ -1,0 +1,4 @@
+hello
+i am a file
+
+i can be read
