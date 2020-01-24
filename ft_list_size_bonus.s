@@ -1,33 +1,28 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_strdup.s                                        :+:      :+:    :+:    ;
+;    ft_list_size_bonus.s                               :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2020/01/21 18:26:24 by cclaude           #+#    #+#              ;
-;    Updated: 2020/01/24 15:32:23 by cclaude          ###   ########.fr        ;
+;    Created: 2020/01/24 16:03:58 by cclaude           #+#    #+#              ;
+;    Updated: 2020/01/24 16:13:43 by cclaude          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-; nasm -f macho64 ft_strdup.s && gcc -o exec main.c ft_strdup.o && ./exec
+; nasm -f macho64 ft_list_size_bonus.s && gcc -o exec main.c ft_list_size_bonus.o && ./exec
 
 section .text
-	extern _malloc
-	extern _ft_strlen
-	extern _ft_strcpy
-	global _ft_strdup
+	global _ft_list_size
 
-_ft_strdup:
-		push	rdi
-		call	_ft_strlen
-		inc		rax
-		mov		rdi, rax
+_ft_list_size:
+	mov		rax, 0		; i = 0
+loop:
+	cmp		rdi, 0		; if lst == NULL
+	je		end			; then return
+	mov		rdi, [rdi+8]; lst = lst->next
+	inc		rax			; i++
+	jmp		loop		; loop til NULL
 
-		call	_malloc				; call malloc
-		pop		rdi
-
-		mov		rsi, rdi			; 2nd = str
-		mov		rdi, rax			; 1st = ptr
-		call	_ft_strcpy			; ft_strcpy(ptr, str)
-		ret
+end:
+	ret

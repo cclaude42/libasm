@@ -12,6 +12,7 @@ SRC = ft_read.s \
 	ft_strdup.s \
 
 B_SRC = ft_cat_bonus.s \
+		ft_list_size_bonus.s \
 
 OBJ = $(SRC:.s=.o)
 
@@ -43,6 +44,12 @@ fclean: clean
 
 re: fclean all
 
+bonus: $(B_OBJ)
+	@echo "\033[0;33mUpdating library (with bonuses)..."
+	ar rc $(NAME) $^
+	ranlib $(NAME)
+	@echo "\033[0m"
+
 test: re
 	@echo "\033[0;31mCleaning..."
 	rm -f $(B_OBJ)
@@ -53,10 +60,14 @@ test: re
 	@echo "\033[0m"
 	./exec
 
-bonus: $(B_OBJ)
+btest: $(B_OBJ)
 	@echo "\033[0;33mUpdating library (with bonuses)..."
 	ar rc $(NAME) $^
 	ranlib $(NAME)
+	@echo "\033[0m"
+	@echo "\033[0;31mCleaning..."
+	rm -f $(B_OBJ)
+	rm -f ./exec
 	@echo "\033[0m"
 	@echo "\033[0;36mTesting : "
 	gcc -L. -lasm -o exec main_bonus.c
