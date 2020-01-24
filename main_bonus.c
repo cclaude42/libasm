@@ -57,6 +57,26 @@ int		list_size_test(int lst_num)
 	return (1);
 }
 
+int		list_push_front_test(void *new)
+{
+	t_list	*list;
+
+	list = NULL;
+	list_add_back(&list, list_new("wtf"));
+	list_add_back(&list, list_new("test"));
+	ft_list_push_front(&list, new);
+	if (!new && !list->data)
+	{
+		printf("" GREEN "[OK] " RESET "");
+		return (0);
+	}
+	if (!strcmp(list->data, (char*)new))
+		printf("" GREEN "[OK] " RESET "");
+	else
+		printf("" RED "[KO] " RESET "");
+	return (1);
+}
+
 int		main(void)
 {
 	/*
@@ -67,5 +87,15 @@ int		main(void)
 	list_size_test(8);
 	list_size_test(1);
 	list_size_test(16);
+	printf("\n\n");
+
+	/*
+	** FT_PUSH_FRONT
+	*/
+	printf("%-16s :  ", "ft_push_front.s");
+	list_push_front_test(strdup("aie"));
+	list_push_front_test(strdup(""));
+	list_push_front_test(strdup("POULOULOU"));
+	list_push_front_test(NULL);
 	printf("\n\n");
 }

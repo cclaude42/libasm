@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 17:51:44 by cclaude           #+#    #+#             */
-/*   Updated: 2020/01/24 16:19:15 by cclaude          ###   ########.fr       */
+/*   Updated: 2020/01/24 17:21:38 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,4 @@ extern ssize_t	ft_write(int fildes, const void *buf, size_t nbyte);
 extern char		*ft_strdup(const char *s1);
 extern void		ft_cat(int fildes);
 extern int		ft_list_size(t_list *lst);
+extern int		ft_list_push_front(t_list **list_start, void *data);

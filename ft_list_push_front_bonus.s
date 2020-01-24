@@ -6,7 +6,7 @@
 ;    By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2020/01/24 16:30:29 by cclaude           #+#    #+#              ;
-;    Updated: 2020/01/24 16:40:53 by cclaude          ###   ########.fr        ;
+;    Updated: 2020/01/24 19:05:07 by cclaude          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -17,16 +17,18 @@ section .text
 	global _ft_list_push_front
 
 _ft_list_push_front:
-	push	rsi			; store list_start
-	push	rdi			; store data
-	mov		rsi, 16		; 1st = 16
+	push	rdi			; store list_start
+	push	rsi			; store data
+	mov		rdi, 16		; 1st = 16
 	call	_malloc		; malloc(16)
-	pop		rdi			;
 	pop		rsi			;
+	pop		rdi			;
 	cmp		rax, 0		; if ret == NULL
-	je		end			; then return ;
-	
-
+	je		end			; then return
+	mov		[rax], rsi	; lst = data
+	mov		rcx, [rdi]	;
+	mov		[rax+8], rcx; lst->next = list_start
+	mov		[rdi], rax	; list_start = lst
 
 end:
 	ret
