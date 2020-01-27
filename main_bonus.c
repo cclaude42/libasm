@@ -43,6 +43,18 @@ t_list	*list_new(void *data)
 	return (lst);
 }
 
+void	print_list(t_list *list)
+{
+	t_list	*tmp;
+
+	tmp = list;
+	while (tmp)
+	{
+		printf("%s\n", tmp->data);
+		tmp = tmp->next;
+	}
+}
+
 int		list_size_test(int lst_num)
 {
 	t_list	*list;
@@ -98,4 +110,59 @@ int		main(void)
 	list_push_front_test(strdup("POULOULOU"));
 	list_push_front_test(NULL);
 	printf("\n\n");
+
+	/*
+	** FT_LIST_SORT
+	*/
+	printf("%-16s :  \n\n", "ft_list_sort.s");
+	t_list	*list;
+
+	list = NULL;
+	list_add_back(&list, list_new("test"));
+	list_add_back(&list, list_new("allo"));
+	list_add_back(&list, list_new("what"));
+	list_add_back(&list, list_new("ok"));
+	list_add_back(&list, list_new("abed"));
+	list_add_back(&list, list_new("one"));
+	list_add_back(&list, list_new("zklo"));
+	list_add_back(&list, list_new("zklo"));
+	printf("before:\n");
+	print_list(list);
+	printf("\n");
+
+	ft_list_remove_if(&list, "zklo", strcmp);
+
+	printf("after:\n");
+	print_list(list);
+	printf("\n");
+	list = NULL;
+	list_add_back(&list, list_new(strdup("5")));
+	list_add_back(&list, list_new(strdup("5")));
+	list_add_back(&list, list_new(strdup("5")));
+	list_add_back(&list, list_new(strdup("5")));
+	list_add_back(&list, list_new(strdup("5")));
+	list_add_back(&list, list_new(strdup("2")));
+	list_add_back(&list, list_new(strdup("5")));
+	list_add_back(&list, list_new(strdup("2")));
+	list_add_back(&list, list_new(strdup("8")));
+	list_add_back(&list, list_new(strdup("0")));
+	list_add_back(&list, list_new(strdup("0")));
+	list_add_back(&list, list_new(strdup("1")));
+	printf("before:\n");
+	print_list(list);
+	printf("\n");
+
+	ft_list_remove_if(&list, "5", strcmp);
+
+	printf("after:\n");
+	print_list(list);
+
+	list = NULL;
+	list_add_back(&list, list_new(strdup("5")));
+	list_add_back(&list, list_new(strdup("0")));
+	list_add_back(&list, list_new(strdup("2")));
+	list_add_back(&list, list_new(strdup("5")));
+	list_add_back(&list, list_new(strdup("8")));
+	list_add_back(&list, list_new(strdup("7")));
+	list_add_back(&list, list_new(strdup("4")));
 }

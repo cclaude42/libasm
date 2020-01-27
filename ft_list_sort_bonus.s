@@ -6,7 +6,7 @@
 ;    By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2020/01/24 18:46:15 by cclaude           #+#    #+#              ;
-;    Updated: 2020/01/26 19:18:50 by cclaude          ###   ########.fr        ;
+;    Updated: 2020/01/27 11:38:11 by cclaude          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -16,11 +16,12 @@ section .text
 	global _ft_list_sort
 
 _ft_list_sort:
-	mov		r12, rdi	; ptr to lst_start
-	mov		rdi, [rdi]	; lst = *lst_start
+	mov		r13, [rdi]	; r13 = *begin_list
+	mov		rdi, [rdi]	; lst = *begin_list
 
 loop:
-	cmp		[rdi+8], 0	; if lst->next == NULL
+	mov		r10, [rdi+8]; r10 = lst->next
+	cmp		r10, 0		; if lst->next == NULL
 	je		end			; then return
 	push	rdi			;
 	push	rsi			;
@@ -31,18 +32,19 @@ loop:
 	call	rcx			; *cmp(lst->data, lst->next->data)
 	pop		rsi			;
 	pop		rdi			;
-	test	rax, rax	; if rax > 0
-	jns		unsorted	; then unsorted
+	cmp		rax, 0		; if rax > 0
+	jg		unsorted	; then unsorted
 	jmp		sorted		; else sorted
 
 unsorted:
-	mov		r10, [rdi+8]; lst->next
-	mov		r11, [r10+8]; lst->next->next
-	mov		[r12], r10	; before->next = next
-	mov		[r10+8], rsi; next->next = lst
-	mov		[rdi+8], r11; lst-> next = lst->next->next
+	mov		r11, [r10]	; r11 = lst->next->data
+	mov		r12, [rdi]	; r12 = lst->data
+	mov		[rdi], r11	; lst->data = lst->next->data
+	mov		[r10], r12	; lst->next->data = lst->data
+	mov		rdi, r13	; return to beginning of list
+	jmp		loop		; loop
+
 sorted:
-	mov		r12, [rdi+8]; before = lst
 	mov		rdi, [rdi+8]; lst = lst->next
 	jmp		loop		; loop
 
