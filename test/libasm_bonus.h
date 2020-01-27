@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 17:51:44 by cclaude           #+#    #+#             */
-/*   Updated: 2020/01/27 15:12:03 by cclaude          ###   ########.fr       */
+/*   Updated: 2020/01/27 18:50:59 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,4 @@ extern int		ft_list_size(t_list *lst);
 extern int		ft_list_push_front(t_list **begin_list, void *data);
 extern void		ft_list_sort(t_list **begin_list, int (*cmp)());
 extern void		ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)());
+extern int		ft_atoi_base(char *str, char *base);

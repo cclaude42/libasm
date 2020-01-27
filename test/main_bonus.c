@@ -1,5 +1,87 @@
 #include "libasm_bonus.h"
 
+int		is_base(char c, char *base)
+{
+	int		i;
+
+	i = 0;
+	while (base[i])
+	{
+		if (base[i] == c)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+int		check_base(char *base)
+{
+	int		i;
+	int		j;
+	int		len;
+
+	i = 0;
+	len = strlen(base);
+	if (len == 0 || len == 1)
+		return (0);
+	while (base[i])
+	{
+		j = i + 1;
+		if (base[i] == '-' || base[i] == '+' || base[i] < 32
+				|| base[i] > 127 || base[i] == ' ')
+			return (0);
+		while (base[j])
+		{
+			if (base[i] == base[j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int		atoi_base(char *str, char *base)
+{
+	int		atoi;
+	int		negative;
+
+	atoi = 0;
+	negative = 1;
+	if (!check_base(base))
+		return (0);
+	while (*str == '\t' || *str == '\v' || *str == '\n' || *str == '\r'
+			|| *str == '\f' || *str == ' ')
+		str++;
+	while (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			negative = negative * -1;
+		str++;
+	}
+	while (is_base(*str, base) >= 0)
+	{
+		atoi = atoi * strlen(base) + is_base(*str, base);
+		str++;
+	}
+	return (atoi * negative);
+}
+
+int		atoi_base_test(char *str, char *base)
+{
+	int 	ret1;
+	int		ret2;
+
+	ret1 = atoi_base(str, base);
+	ret2 = ft_atoi_base(str, base);
+	printf("[%d]", ret1);
+	if (ret1 == ret2)
+		printf("" GREEN "[OK] " RESET "");
+	else
+		printf("" RED "[KO] " RESET "");
+	return (1);
+}
+
 int		list_size(t_list *lst)
 {
 	int		count;
@@ -91,6 +173,28 @@ int		list_push_front_test(void *new)
 
 int		main(void)
 {
+	/*
+	** FT_ATOI_BASE
+	*/
+	printf("%-16s :  ", "ft_atoi_base.s");
+	atoi_base_test("2147483647", "0123456789");
+	atoi_base_test("", "0123456789");
+	atoi_base_test("2147483647", "011");
+	atoi_base_test("18f", "0123456789abcdef");
+	atoi_base_test("18fb52", "0123456789");
+	atoi_base_test("18f", "");
+	atoi_base_test("", "");
+	atoi_base_test("45", "");
+	atoi_base_test("45", "0");
+	atoi_base_test("--2147483647", "0123456789");
+	atoi_base_test("      ++++---2147483647", "0123456789");
+	atoi_base_test("-2147483648", "0123456789");
+	atoi_base_test("--2147483647", "0123456789-");
+	atoi_base_test("-2147483647", "0123456789-");
+	atoi_base_test(" \t--\t-2147483647", "0123456789");
+	atoi_base_test("  -+\v++-\t--2147483647", "0123456789");
+	printf("\n\n");
+
 	/*
 	** FT_LIST_SIZE
 	*/

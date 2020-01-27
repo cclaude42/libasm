@@ -184,4 +184,8 @@ int		main(void)
 	strdup_test("allo \0 mon bars");
 	strdup_test("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tellus metus, finibus quis sagittis quis, volutpat a justo. Nunc et pellentesque quam. Fusce aliquam aliquam libero, sed pulvinar nullam.");
 	printf("\n");
+
+	printf("%c|%d", ' ', ' ');
+	printf("%c|%d", '\t', '\t');
+	printf("%c|%d", '\n', '\n');
 }
