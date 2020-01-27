@@ -6,7 +6,7 @@
 ;    By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2020/01/27 17:08:04 by cclaude           #+#    #+#              ;
-;    Updated: 2020/01/27 19:36:38 by cclaude          ###   ########.fr        ;
+;    Updated: 2020/01/27 20:49:05 by cclaude          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -52,7 +52,13 @@ skipsign:
 	cmp		dl, 45		; if str[0] == '-'
 	je		sign		; then change sign and loop
 loop:
-	call	in_str		;
+	mov		dl, byte[rdi]; dl = str[0]
+	push	rdi
+	push	rsi
+	mov		rdi, dl		; 1st = str[0]
+	call	in_str		; in_str(str[0], base)
+	pop		rsi
+	pop		rdi
 	cmp		rax, 0		; if (ret < 0)
 	jl		end			; then end
 	imul	r11, r10	; nbr *= baselen
@@ -70,10 +76,17 @@ sign:
 	jmp		skipsign	;
 
 in_str:
-	mov		rax, -1		;
-	mov		dl, byte[rdi];
-	cmp		dl, 0		;
-	je		stop
-	mov		rax, 2
+	mov		rax, -1		; i = -1
+index:
+	inc		rax			; i++
+	mov		dl, byte[rsi+rax]; dl = str[i]
+	cmp		dl, 0		; if (str[i] == '\0')
+	je		error		; then return (-1)
+	cmp		dl, dil		; if (str[i] == c)
+	je		stop		; then return (i)
+	jmp		index		; loop
 stop:
+	ret
+error:
+	mov		rax, -1
 	ret
