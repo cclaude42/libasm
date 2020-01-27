@@ -6,7 +6,7 @@
 ;    By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2020/01/27 17:08:04 by cclaude           #+#    #+#              ;
-;    Updated: 2020/01/27 19:06:36 by cclaude          ###   ########.fr        ;
+;    Updated: 2020/01/27 19:16:05 by cclaude          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -17,7 +17,6 @@ section .text
 	global _ft_atoi_base
 
 _ft_atoi_base:
-	mov		r10, 0		; i = 0
 	mov		r11, 0		; nbr = 0
 	mov		r12, 1		; sign = 1
 	push	rdi
@@ -60,10 +59,5 @@ skipsign:
 
 
 sign:
-	cmp		r12, 1		; if (sign == 1)
-	jne		neg			;
-	mov		r12, -1		; then sign = -1
-	jmp		skipsign	;
-neg:
-	mov		r12, 1		; else sign = 1
+	imul	r12, -1		;
 	jmp		skipsign	;

@@ -74,7 +74,7 @@ int		atoi_base_test(char *str, char *base)
 
 	ret1 = atoi_base(str, base);
 	ret2 = ft_atoi_base(str, base);
-	printf("[%d]", ret1);
+	printf("[%d]", ret2);
 	if (ret1 == ret2)
 		printf("" GREEN "[OK] " RESET "");
 	else
