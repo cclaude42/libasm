@@ -38,7 +38,7 @@ int		strcmp_test(char *s1, char *s2)
 
 	ret1 = ft_strcmp(s1, s2);
 	ret2 = strcmp(s1, s2);
-	printf("strcmp : %d / ft_strcmp : %d\n", ret1, ret2);
+	// printf("strcmp : %d / ft_strcmp : %d\n", ret1, ret2);
 	if ((ret1 > 0 && ret2 > 0) || (ret1 < 0 && ret2 < 0) || (ret1 == 0 && ret2 == 0))
 		printf("" GREEN "[OK] " RESET "");
 	else

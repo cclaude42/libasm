@@ -59,7 +59,7 @@ test: re
 	rm -f ./exec
 	@echo "\033[0m"
 	@echo "\033[0;36mTesting : "
-	gcc -L. -lasm -o exec main.c
+	gcc -L. -lasm -o exec test/main.c
 	@echo "\033[0m"
 	./exec
 
@@ -73,7 +73,7 @@ btest: $(B_OBJ)
 	rm -f ./exec
 	@echo "\033[0m"
 	@echo "\033[0;36mTesting : "
-	gcc -L. -lasm -o exec main_bonus.c
+	gcc -L. -lasm -o exec test/main_bonus.c
 	@echo "\033[0m"
 	./exec
 
