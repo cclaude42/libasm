@@ -55,7 +55,7 @@ loop:
 	mov		dl, byte[rdi]; dl = str[0]
 	push	rdi
 	push	rsi
-	mov		rdi, dl		; 1st = str[0]
+	mov		dil, dl		; 1st = str[0]
 	call	in_str		; in_str(str[0], base)
 	pop		rsi
 	pop		rdi
