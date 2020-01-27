@@ -6,7 +6,7 @@
 ;    By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2020/01/27 17:08:04 by cclaude           #+#    #+#              ;
-;    Updated: 2020/01/27 19:16:05 by cclaude          ###   ########.fr        ;
+;    Updated: 2020/01/27 19:36:38 by cclaude          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -25,7 +25,7 @@ _ft_atoi_base:
 	call	_ft_strlen	; call strlen
 	pop		rsi
 	pop		rdi
-	mov		rcx, rax	; baselen = strlen(base)
+	mov		r10, rax	; baselen = strlen(base)
 	dec		rdi			; str--
 
 skipspace:
@@ -51,13 +51,29 @@ skipsign:
 	je		skipsign	; then loop
 	cmp		dl, 45		; if str[0] == '-'
 	je		sign		; then change sign and loop
+loop:
+	call	in_str		;
+	cmp		rax, 0		; if (ret < 0)
+	jl		end			; then end
+	imul	r11, r10	; nbr *= baselen
+	add		r11, rax	; nbr += index
+	inc		rdi			; str++
+	jmp		loop		; loop
 
-
-	mov		rax, r12
+end:
+	imul	r11, r12	; nbr * sign
+	mov		rax, r11	; return (nbr)
 	ret
-
-
 
 sign:
 	imul	r12, -1		;
 	jmp		skipsign	;
+
+in_str:
+	mov		rax, -1		;
+	mov		dl, byte[rdi];
+	cmp		dl, 0		;
+	je		stop
+	mov		rax, 2
+stop:
+	ret
