@@ -74,7 +74,6 @@ int		atoi_base_test(char *str, char *base)
 
 	ret1 = atoi_base(str, base);
 	ret2 = ft_atoi_base(str, base);
-	printf("[%d]", ret2);
 	if (ret1 == ret2)
 		printf("" GREEN "[OK] " RESET "");
 	else
@@ -269,4 +268,11 @@ int		main(void)
 	list_add_back(&list, list_new(strdup("8")));
 	list_add_back(&list, list_new(strdup("7")));
 	list_add_back(&list, list_new(strdup("4")));
+
+	int		fd;
+
+	fd = open("test/file.txt", O_RDONLY);
+	printf("\nft_cat :\n");
+	ft_cat(fd);
+	printf("EOF\n");
 }
