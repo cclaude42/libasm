@@ -183,12 +183,12 @@ int		main(void)
 	atoi_base_test("18f", "0123456789abcdef");
 	atoi_base_test("18fb52", "0123456789");
 	atoi_base_test("18f", "");
-	atoi_base_test("", "");
+	atoi_base_test("101", "1");
 	atoi_base_test("45", "");
 	atoi_base_test("45", "0");
 	atoi_base_test("--2147483647", "0123456789");
 	atoi_base_test("      ++++---2147483647", "0123456789");
-	atoi_base_test("-2147483648", "0123456789");
+	atoi_base_test("--2147483648", "0123456789");
 	atoi_base_test("--2147483647", "0123456789-");
 	atoi_base_test("-2147483647", "0123456789-");
 	atoi_base_test(" \t--\t-2147483647", "0123456789");
