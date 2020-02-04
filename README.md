@@ -2,11 +2,11 @@
 
 Recoding certain functions of the standard C Library, but in x86-64 Intel Assembly.
 
-## Final grade : 115/115
+## Final grade : 125/125
 
 Mandatory part : 100/100
 
-Bonus : 15/15
+Bonus : 25/25
 
 ### How to use it
 
