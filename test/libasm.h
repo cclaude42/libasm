@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:25:47 by cclaude           #+#    #+#             */
-/*   Updated: 2020/01/21 18:25:49 by cclaude          ###   ########.fr       */
+/*   Updated: 2020/01/28 15:42:53 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 # define GREEN   "\033[32m"
 # define BUFFER_SIZE 512
 
-extern ssize_t	ft_read(int fildes, void *buf, size_t nbyte);
-extern int		ft_strcmp(const char *s1, const char *s2);
-extern char		*ft_strcpy(char *dst, const char *src);
-extern size_t	ft_strlen(const char *s);
-extern ssize_t	ft_write(int fildes, const void *buf, size_t nbyte);
-extern char		*ft_strdup(const char *s1);
+ssize_t		ft_read(int fildes, void *buf, size_t nbyte);
+int			ft_strcmp(const char *s1, const char *s2);
+char		*ft_strcpy(char *dst, const char *src);
+size_t		ft_strlen(const char *s);
+ssize_t		ft_write(int fildes, const void *buf, size_t nbyte);
+char		*ft_strdup(const char *s1);

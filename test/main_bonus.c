@@ -271,7 +271,7 @@ int		main(void)
 
 	int		fd;
 
-	fd = open("test/file.txt", O_RDONLY);
+	fd = open("/dev/random", O_RDONLY);
 	printf("\nft_cat :\n");
 	ft_cat(fd);
 	printf("EOF\n");
