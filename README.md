@@ -36,3 +36,6 @@ void		ft_list_sort(t_list **begin_list, int (*cmp)());
 void		ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)());
 int		ft_atoi_base(char *str, char *base);
 ```
+
+### Useful links
+[Assembly Cheat Sheet](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf)
