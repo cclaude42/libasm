@@ -17,6 +17,8 @@ section .text
 
 _ft_strcmp:
 		push	r10
+		mov		rax, 0
+		mov		rbx, 0
 		mov		r10, -1				; i = -1
 loop:	inc		r10					; i++
 		mov		al, byte [rdi+r10]	; al = str1[i]
